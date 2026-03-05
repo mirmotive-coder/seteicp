@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SETE Sushi Dark Theme — warm dark brown palette */
+    --radius: 0.375rem;
+
+    /* Background: #1b1412 warm dark brown */
+    --background: 0.17 0.018 42;
+    /* Foreground: #f5f5f5 warm white */
+    --foreground: 0.965 0.004 106;
+
+    /* Card: #241b17 slightly lighter brown */
+    --card: 0.2 0.022 42;
+    --card-foreground: 0.965 0.004 106;
+
+    /* Popover */
+    --popover: 0.22 0.022 42;
+    --popover-foreground: 0.965 0.004 106;
+
+    /* Primary — gold #d4af37 */
+    --primary: 0.755 0.148 88;
+    --primary-foreground: 0.15 0.018 42;
+
+    /* Secondary — dark muted */
+    --secondary: 0.26 0.022 42;
+    --secondary-foreground: 0.965 0.004 106;
+
+    /* Muted */
+    --muted: 0.24 0.018 42;
+    --muted-foreground: 0.62 0.028 60;
+
+    /* Accent — gold */
+    --accent: 0.755 0.148 88;
+    --accent-foreground: 0.15 0.018 42;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border: #3a2e28 warm dark brown */
+    --border: 0.28 0.024 45;
+    --input: 0.28 0.024 45;
+    --ring: 0.755 0.148 88;
+
+    /* Charts */
+    --chart-1: 0.755 0.148 88;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.2 0.022 42;
+    --sidebar-foreground: 0.965 0.004 106;
+    --sidebar-primary: 0.755 0.148 88;
+    --sidebar-primary-foreground: 0.15 0.018 42;
+    --sidebar-accent: 0.26 0.022 42;
+    --sidebar-accent-foreground: 0.965 0.004 106;
+    --sidebar-border: 0.28 0.024 45;
+    --sidebar-ring: 0.755 0.148 88;
+
+    /* Custom SETE tokens */
+    --gold: #d4af37;
+    --gold-light: #e8cc68;
+    --gold-dim: rgba(212, 175, 55, 0.15);
+    --warm-bg: #1b1412;
+    --card-bg: #241b17;
+    --border-color: #3a2e28;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0967a;
+    --text-muted: #7a6e5a;
+    --danger: #c0392b;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: #1b1412;
+    color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .bg-gold {
+    background-color: var(--gold);
+  }
+
+  .border-gold {
+    border-color: var(--gold);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .gold-glow-sm {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Gold button pulse glow */
+  @keyframes gold-pulse {
+    0%, 100% { box-shadow: 0 0 18px rgba(212,175,55,0.25), 0 0 0px rgba(212,175,55,0); }
+    50%       { box-shadow: 0 0 28px rgba(212,175,55,0.45), 0 0 52px rgba(212,175,55,0.18); }
+  }
+
+  .hero-cta-btn {
+    box-shadow: 0 0 18px rgba(212,175,55,0.25);
+    animation: gold-pulse 3s ease-in-out infinite;
+    transition: box-shadow 0.3s ease, transform 0.15s ease;
+  }
+
+  .hero-cta-btn:hover {
+    animation: none;
+    box-shadow: 0 0 28px rgba(212,175,55,0.55), 0 0 60px rgba(212,175,55,0.22);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 14px rgba(212,175,55,0.3);
+  }
+
+  /* Grain texture overlay for premium feel */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
